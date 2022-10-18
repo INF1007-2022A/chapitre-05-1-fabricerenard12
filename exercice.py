@@ -6,30 +6,88 @@ from typing import List
 
 
 def convert_to_absolute(number: float) -> float:
-    return 0
+    if number > 0:
+        return number
+    
+    number = number - 2 * number
+    return number
 
 
 def use_prefixes() -> List[str]:
     prefixes, suffixe = 'JKLMNOPQ', 'ack'
+    noms = []
 
-    return [""]
+    for i in prefixes:
+        noms.append(i + suffixe)
+    
+    return noms
 
 
 def prime_integer_summation() -> int:
-    return 0
+    nombres_premiers = []
+    currentNumber = 2
+    sum = 0
+    count = 0
 
+    while count < 100:
+        prime = True
+        for i in range(2, currentNumber):
+            if currentNumber % i == 0:
+                prime = False
+                break
+        if prime:  
+            sum += currentNumber
+            count += 1
+        currentNumber += 1
+
+    return sum
 
 def factorial(number: int) -> int:
-    return 0
+    res = 1
+    
+    for i in range(1, number + 1):
+        res *= i
+    
+    return res
 
 
 def use_continue() -> None:
-    pass
+    for i in range(1, 10):
+        if i == 5:
+            continue
+        print(i)
 
 
 def verify_ages(groups: List[List[int]]) -> List[bool]:
-    return []
+    ages_booleans = []
 
+    for group in groups:
+        if len(group) > 10 or len(group) <= 3:
+            ages_booleans.append(False)
+            continue
+        elif 25 in group:
+            ages_booleans.append(True)
+            continue
+
+        else:
+            conditionMet = False
+            for person in group:
+                if person < 18:
+                    ages_booleans.append(False)
+                    conditionMet = True
+                    break
+                elif person > 70 and 50 in group:
+                    ages_booleans.append(False)
+                    conditionMet = True
+                    break
+            
+            if conditionMet:
+                continue
+
+            ages_booleans.append(True)
+            
+    
+    return ages_booleans
 
 def main() -> None:
     number = -4.325
